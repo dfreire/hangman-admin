@@ -5,6 +5,7 @@
         "lodash": "*",
         "fontawesome": "*",
         "bootstrap": "*",
-        "polymer": "*"
+        "polymer": "*",
+        "app-router": "*"
     }
 }

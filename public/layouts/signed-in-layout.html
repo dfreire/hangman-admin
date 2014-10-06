@@ -1,0 +1,20 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/elements/signed-in-menu.html">
+<link rel="import" href="/elements/admin-navigation.html">
+
+<polymer-element name="signed-in-layout" noscript>
+<template>
+    <h1>sign-in-layout</h1>
+    <signed-in-menu></signed-in-menu>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <admin-navigation></admin-navigation>
+            </div>
+            <div class="col-md-9">
+				<content></content>
+            </div>
+        </div>
+    </div>
+</template>
+</polymer-element>

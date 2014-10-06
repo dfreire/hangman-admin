@@ -5,20 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hangman Admin</title>
-    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/bower_components/fontawesome/css/font-awesome.min.css">
     <script src="/bower_components/platform/platform.js"></script>
-    <link rel="import" href="/elements/signed-out-menu.html">
-    <link rel="import" href="/elements/sign-in-panel.html">
-    <link rel="import" href="/elements/reset-password-panel.html">
+    <link rel="import" href="/bower_components/app-router/app-router.html">
 </head>
 <body unresolved>
-    <signed-out-menu></signed-out-menu>
-    <div class="container">
-        {{yield}}
-    </div>
-    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/bower_components/lodash/dist/lodash.min.js"></script>
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <app-router>
+      <app-route path="/" import="/pages/sign-in-page.html" template></app-route>
+      <app-route path="/sign-in" import="/pages/sign-in-page.html" template></app-route>
+      <!--
+      <app-route path="/reset-password" import="/pages/reset-password.html"></app-route>
+      <app-route path="*" import="/pages/sign-in.html"></app-route>
+      -->
+    </app-router>
 </body>
 </html>

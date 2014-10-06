@@ -5,26 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hangman Admin</title>
-    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/bower_components/fontawesome/css/font-awesome.min.css">
     <script src="/bower_components/platform/platform.js"></script>
-    <link rel="import" href="/elements/signed-in-menu.html">
-    <link rel="import" href="/elements/admin-navigation.html">
+    <link rel="import" href="/bower_components/app-router/app-router.html">
 </head>
-<body>
-    <signed-in-menu></signed-in-menu>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <admin-navigation></admin-navigation>
-            </div>
-            <div class="col-md-9">
-                {{yield}}
-            </div>
-        </div>
-    </div>
-    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/bower_components/lodash/dist/lodash.min.js"></script>
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<body unresolved>
+    <app-router>
+      <app-route path="/dashboard" import="/pages/dashboard.html"></app-route>
+      <app-route path="/games" import="/pages/games.html"></app-route>
+    </app-router>
 </body>
 </html>
