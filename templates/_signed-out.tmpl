@@ -11,11 +11,11 @@
     <link rel="import" href="/bower_components/app-router/app-router.html">
 </head>
 <body unresolved>
-    <app-router>
+    <app-router mode="pushstate">
       <app-route path="/" import="/pages/sign-in-page.html" template></app-route>
       <app-route path="/sign-in" import="/pages/sign-in-page.html" template></app-route>
+      <app-route path="/reset-password" import="/pages/reset-password-page.html"></app-route>
       <!--
-      <app-route path="/reset-password" import="/pages/reset-password.html"></app-route>
       <app-route path="*" import="/pages/sign-in.html"></app-route>
       -->
     </app-router>

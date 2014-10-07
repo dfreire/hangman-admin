@@ -1,5 +1,5 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
-<polymer-element name="sign-in-panel">
+<polymer-element name="sign-in-panel" noscript>
 <template>
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bower_components/fontawesome/css/font-awesome.min.css">
@@ -8,11 +8,9 @@
             margin-top: 100px;
         }
     </style>
-    <h1>sign-in panel</h1>
     <div class="row">
     <div class="col-md-4 col-md-offset-4">
     <div class="panel panel-default">
-
         <div class="panel-heading">
             <h3 class="panel-title">Sign In</h3>
         </div>
@@ -23,7 +21,7 @@
                     <input type="email" class="form-control" id="usernameOrEmail" placeholder="">
                 </div>
                 <div class="form-group">
-                    <label for="password">Password <a href="/reset-password">(forgot password)</a></label>
+                    <label for="password">Password <a  is="pushstate-anchor" href="/reset-password">(forgot password)</a></label>
                     <input type="password" class="form-control" id="password" placeholder="">
                 </div>
                 <!--
