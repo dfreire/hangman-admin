@@ -10,10 +10,6 @@ func main() {
 	m.Use(render.Renderer())
 
 	m.Get("/", func(r render.Render) {
-        r.Redirect("sign-in")
-	})
-
-	m.Get("/sign-in", func(r render.Render) {
 		r.HTML(200, "_signed-out", "")
 	})
 
