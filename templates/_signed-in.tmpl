@@ -12,8 +12,9 @@
 </head>
 <body unresolved>
     <app-router>
-      <app-route path="/dashboard" import="/pages/dashboard.html"></app-route>
-      <app-route path="/games" import="/pages/games.html"></app-route>
+      <app-route path="/dashboard" import="/pages/dashboard-page.html"></app-route>
+      <app-route path="/games" import="/pages/games-page.html"></app-route>
+      <app-route path="*" redirect="/dashboard"></app-route>
     </app-router>
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/bower_components/lodash/dist/lodash.min.js"></script>
