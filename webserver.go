@@ -10,18 +10,12 @@ func main() {
 	m.Use(render.Renderer())
 
 	m.Get("/", func(r render.Render) {
-		r.HTML(200, "_signed-out", "")
-	})
-
-    m.Get("/?_escaped_fragment_=", func(r render.Render) {
+        // TODO check param _escaped_fragment_
 		r.HTML(200, "_signed-out", "")
 	})
 
 	m.Get("/admin", func(r render.Render) {
-		r.HTML(200, "_signed-in", "")
-	})
-
-    m.Get("/admin/?_escaped_fragment_=", func(r render.Render) {
+        // TODO check param _escaped_fragment_
 		r.HTML(200, "_signed-in", "")
 	})
 
