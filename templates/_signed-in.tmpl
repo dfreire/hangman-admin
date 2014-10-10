@@ -10,12 +10,14 @@
     <link rel="stylesheet" href="/bower_components/fontawesome/css/font-awesome.min.css">
     <script src="/bower_components/platform/platform.js"></script>
     <link rel="import" href="/bower_components/app-router/app-router.html">
+    <link rel="import" href="/bower_components/pushstate-anchor/pushstate-anchor.html">
 </head>
 <body unresolved>
-    <app-router>
-      <app-route path="/dashboard" import="/pages/dashboard-page.html"></app-route>
-      <app-route path="/games" import="/pages/games-page.html"></app-route>
-      <app-route path="*" redirect="/dashboard"></app-route>
+    <app-router mode="pushstate">
+      <app-route path="/admin/dashboard" import="/pages/dashboard-page.html"></app-route>
+      <app-route path="/admin/games" import="/pages/games-page.html"></app-route>
+      <app-route path="/sign-out" redirect="/sign-in"></app-route>
+      <app-route path="*" redirect="/admin/dashboard"></app-route>
     </app-router>
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/bower_components/lodash/dist/lodash.min.js"></script>
