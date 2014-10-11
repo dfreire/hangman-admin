@@ -14,9 +14,9 @@
 </head>
 <body unresolved>
     <app-router mode="pushstate">
-      <app-route path="/sign-in" import="/pages/sign-in-page.html" template></app-route>
-      <app-route path="/reset-password" import="/pages/reset-password-page.html"></app-route>
-      <app-route path="*" redirect="/sign-in"></app-route>
+      <app-route path="/public/sign-in" import="/pages/sign-in-page.html" template></app-route>
+      <app-route path="/public/reset-password" import="/pages/reset-password-page.html"></app-route>
+      <app-route path="*" redirect="/public/sign-in"></app-route>
     </app-router>
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/bower_components/lodash/dist/lodash.min.js"></script>

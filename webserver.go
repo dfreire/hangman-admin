@@ -12,14 +12,10 @@ func main() {
 	m.Use(render.Renderer())
 
 	m.Get("/", func(req *http.Request, r render.Render) {
-		r.Redirect("/sign-in")
+		r.Redirect("/public/")
 	})
 
-	m.Get("/sign-out", func(req *http.Request, r render.Render) {
-		r.Redirect("/")
-	})
-
-	m.Get("/sign-in", func(req *http.Request, r render.Render) {
+	m.Get("/public**", func(req *http.Request, r render.Render) {
 		if isSpider(req) {
 			renderSpider(r)
 		} else {
@@ -27,17 +23,9 @@ func main() {
 		}
 	})
 
-	m.Get("/reset-password", func(req *http.Request, r render.Render) {
+	m.Get("/admin**", func(req *http.Request, r render.Render) {
 		if isSpider(req) {
-			renderSpider(r)
-		} else {
-			renderPublic(r)
-		}
-	})
-
-	m.Get("/admin/**", func(req *http.Request, r render.Render) {
-		if isSpider(req) {
-			r.Redirect("/")
+			r.Redirect("/public/")
 		} else {
 			renderAdmin(r)
 		}
