@@ -1,6 +1,6 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 <link rel="import" href="/layouts/admin-layout.html">
-<polymer-element name="games-page" noscript>
+<polymer-element name="games-page">
 <template>
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bower_components/fontawesome/css/font-awesome.min.css">
@@ -26,10 +26,7 @@
                         <li><a href="#">Separated link</a></li>
                       </ul>
                     </div>
-                    </div>
-
-                
-
+                </div>
                 <table class="table table-striped">
                     <thead>
                         <th>ID</th>
@@ -47,4 +44,14 @@
         </div>
     </admin-layout>
 </template>
+<script>
+    Polymer({
+      ready: function() {
+        applyAuthorStyles: true
+      }
+    });
+</script>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/lodash/dist/lodash.min.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 </polymer-element>

@@ -11,23 +11,11 @@ func main() {
 	m := martini.Classic()
 	m.Use(render.Renderer())
 
-	m.Get("/", func(req *http.Request, r render.Render) {
-		r.Redirect("/public/")
-	})
-
-	m.Get("/public**", func(req *http.Request, r render.Render) {
+	m.Get("**", func(req *http.Request, r render.Render) {
 		if isSpider(req) {
 			renderSpider(r)
 		} else {
-			renderPublic(r)
-		}
-	})
-
-	m.Get("/admin**", func(req *http.Request, r render.Render) {
-		if isSpider(req) {
-			r.Redirect("/public/")
-		} else {
-			renderAdmin(r)
+			renderBrowser(r)
 		}
 	})
 
@@ -42,10 +30,6 @@ func renderSpider(r render.Render) {
 	r.HTML(200, "spider-template", "")
 }
 
-func renderPublic(r render.Render) {
-	r.HTML(200, "public-template", "")
-}
-
-func renderAdmin(r render.Render) {
-	r.HTML(200, "admin-template", "")
+func renderBrowser(r render.Render) {
+	r.HTML(200, "browser-template", "")
 }
