@@ -5,7 +5,8 @@
         "lodash": "*",
         "fontawesome": "*",
         "bootstrap": "*",
-        "angular": "*",
-        "angular-route": "*"
+        "polymer": "*",
+        "app-router": "*",
+        "pushstate-anchor": "*"
     }
 }

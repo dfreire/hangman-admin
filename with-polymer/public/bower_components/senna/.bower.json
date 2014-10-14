@@ -1,0 +1,37 @@
+{
+  "name": "senna",
+  "version": "0.2.1",
+  "description": "A blazing-fast Single Page Application engine",
+  "homepage": "http://sennajs.com",
+  "authors": [
+    "Eduardo Lundgren <edu@rdo.io>"
+  ],
+  "main": "src/senna.js",
+  "keywords": [
+    "spa",
+    "single",
+    "page",
+    "apps"
+  ],
+  "license": "BSD",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "devDependencies": {
+    "assert": "~0.1.0",
+    "mocha": "~1.21.4",
+    "pure": "~0.5.0"
+  },
+  "_release": "0.2.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.2.1",
+    "commit": "087895c70d9c9d65fb07ff38b9cd61c2d0c9b6a6"
+  },
+  "_source": "git://github.com/eduardolundgren/senna.git",
+  "_target": "*",
+  "_originalSource": "senna"
+}
