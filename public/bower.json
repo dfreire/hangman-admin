@@ -6,6 +6,6 @@
         "fontawesome": "*",
         "bootstrap": "*",
         "angular": "*",
-        "angular-route": "*"
+        "ui-router": "*"
     }
 }

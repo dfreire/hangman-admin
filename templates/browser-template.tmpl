@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="HangmanAdmin">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,10 +19,11 @@
         <app-route path="*"                 redirect="/sign-in"></app-route>
     </app-router>
     -->
+    <div ui-view></div>
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/bower_components/lodash/dist/lodash.min.js"></script>
     <script src="/bower_components/angular/angular.min.js"></script>
-    <script src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/bower_components/ui-router/release/angular-ui-router.min.js"></script>
     <script src="/app.js"></script>
 </body>
 </html>
