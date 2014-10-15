@@ -18,7 +18,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	  				templateUrl: '/elements/public-menu.html'
 	  			},
 	  			"content": {
-	  				templateUrl: '/elements/sign-in.html',
+	  				templateUrl: '/elements/sign-in-panel.html',
 	  				controller: 'SignInController'
 	  			}
 	  		}
