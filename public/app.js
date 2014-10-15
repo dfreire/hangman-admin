@@ -1,7 +1,7 @@
 var app = angular.module('HangmanAdmin', ['ui.router']);
 
 app.config(function($locationProvider) {
-	$locationProvider.hashPrefix('!');
+	$locationProvider.html5Mode(true);
 });
 
 app.config(function($stateProvider, $urlRouterProvider) {
