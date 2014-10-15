@@ -8,7 +8,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider.otherwise('/sign-in');
 
 	$stateProvider
-		.state('sign-in', {
+		.state('public', {
+	  		templateUrl: '/layouts/public-layout.html'
+		})
+		.state('public.sign-in', {
 	  		url: '/sign-in',
 	  		views: {
 	  			"menu": {
@@ -19,7 +22,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	  				controller: 'SignInController'
 	  			}
 	  		}
-		}).state('reset-password', {
+		})
+		.state('public.reset-password', {
 	  		url: '/reset-password',
 	  		views: {
 	  			"menu": {
@@ -27,6 +31,37 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	  			},
 	  			"content": {
 	  				templateUrl: '/elements/reset-password-panel.html'
+	  			}
+	  		}
+	  	})
+		.state('admin', {
+	  		templateUrl: '/layouts/admin-layout.html'
+		})
+		.state('admin.dashboard', {
+	  		url: '/dashboard',
+	  		views: {
+	  			"menu": {
+	  				templateUrl: '/elements/admin-menu.html'
+	  			},
+				"navigation": {
+					templateUrl: '/elements/admin-navigation.html'
+				},
+				"content": {
+					templateUrl: '/elements/dashboard-pane.html'
+	  			}
+	  		}
+	  	})
+		.state('admin.games', {
+	  		url: '/games',
+	  		views: {
+	  			"menu": {
+	  				templateUrl: '/elements/admin-menu.html'
+	  			},
+				"navigation": {
+					templateUrl: '/elements/admin-navigation.html'
+				},
+				"content": {
+					templateUrl: '/elements/games-pane.html'
 	  			}
 	  		}
 		});
