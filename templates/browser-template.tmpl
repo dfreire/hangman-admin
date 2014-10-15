@@ -10,16 +10,8 @@
     <link rel="stylesheet" href="/bower_components/fontawesome/css/font-awesome.min.css">
 </head>
 <body>
-    <!--
-    <app-router mode="pushstate">
-        <app-route path="/sign-in"          import="/pages/sign-in-page.html"></app-route>
-        <app-route path="/reset-password"   import="/pages/reset-password-page.html"></app-route>
-        <app-route path="/dashboard"        import="/pages/dashboard-page.html"></app-route>
-        <app-route path="/games"            import="/pages/games-page.html"></app-route>
-        <app-route path="*"                 redirect="/sign-in"></app-route>
-    </app-router>
-    -->
-    <div ui-view></div>
+    <div ui-view="menu"></div>
+    <div ui-view="content"></div>
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/bower_components/lodash/dist/lodash.min.js"></script>
     <script src="/bower_components/angular/angular.min.js"></script>
