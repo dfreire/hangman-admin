@@ -3,18 +3,28 @@
         <h3 class="panel-title">Games</h3>
     </div>
     <div class="panel-body">
+
         <div>
-            <a href="/admin/dashboard" class="btn btn-success"><i class="fa fa-plus">&nbsp;</i> Create</a>
-            <div class="btn-group">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                Selected <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#"><i class="fa fa-pencil">&nbsp;</i> Update</a></li>
-                <li><a href="#"><i class="fa fa-minus">&nbsp;</i> Remove</a></li>
-              </ul>
-            </div>
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Filter...">
+                        <div class="input-group-addon"><i class="fa fa-filter">&nbsp;</i></div>
+                    </div>
+                </div>
+                <a href="/admin/dashboard" class="btn btn-success"><i class="fa fa-plus">&nbsp;</i> Create</a>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        Bulk Actions... <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#"><i class="fa fa-pencil">&nbsp;</i> Update</a></li>
+                        <li><a href="#"><i class="fa fa-minus">&nbsp;</i> Remove</a></li>
+                    </ul>
+                </div>
+            </form>
         </div>
+
         <br />
         <table class="table table-striped">
             <thead>
@@ -23,6 +33,7 @@
                 <th>Clue / Answer / URL</th>
                 <th># Likes / # Unlikes / # Flagged</th>
                 <th>Status</th>
+                <th>Actions</th>
             </thead>
         </table>
     </div>
