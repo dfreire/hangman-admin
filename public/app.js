@@ -64,6 +64,20 @@ app.config(function($stateProvider, $urlRouterProvider) {
 					templateUrl: '/elements/games-pane.html'
 	  			}
 	  		}
+		})
+		.state('admin.newGame', {
+	  		url: '/new-game',
+	  		views: {
+	  			"menu": {
+	  				templateUrl: '/elements/admin-menu.html'
+	  			},
+				"navigation": {
+					templateUrl: '/elements/admin-navigation.html'
+				},
+				"content": {
+					templateUrl: '/elements/new-game.html'
+	  			}
+	  		}
 		});
 });
 
