@@ -51,6 +51,20 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	  			}
 	  		}
 	  	})
+		.state('admin.users', {
+	  		url: '/users',
+	  		views: {
+	  			"menu": {
+	  				templateUrl: '/elements/admin-menu.html'
+	  			},
+				"navigation": {
+					templateUrl: '/elements/admin-navigation.html'
+				},
+				"content": {
+					templateUrl: '/elements/users-pane.html'
+	  			}
+	  		}
+		})
 		.state('admin.games', {
 	  		url: '/games',
 	  		views: {

@@ -1,0 +1,43 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Users</h3>
+    </div>
+    <div class="panel-body">
+        <div>
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-filter">&nbsp;</i>Filters <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                <li><a href="#">All</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <a href="/new-user" class="btn btn-success"><i class="fa fa-plus">&nbsp;</i> Create</a>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-check-square-o">&nbsp;</i>Bulk Actions... <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/update-users"><i class="fa fa-pencil">&nbsp;</i> Update</a></li>
+                        <li><a href="/remove-users"><i class="fa fa-minus">&nbsp;</i> Remove</a></li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+        <br />
+        <div>
+            <table class="table table-striped">
+                <thead>
+                    <th>ID</th>
+                    <th>Email</th>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
