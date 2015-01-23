@@ -5,3 +5,4 @@ public/
 test.toml
 test-event-store/
 test-snapshot-store/
+node_modules/

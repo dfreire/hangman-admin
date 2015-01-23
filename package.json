@@ -1,0 +1,11 @@
+{
+    "name": "hangman-admin",
+    "version": "0.0.1",
+    "devDependencies": {
+        "gulp": "*",
+        "gulp-6to5": "*",
+        "gulp-sass": "*",
+        "gulp-cached": "*",
+        "gulp-watch": "*"
+    }
+}
