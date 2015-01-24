@@ -20,5 +20,5 @@ var routes = (
 );
 
 Router.run(routes, Router.HistoryLocation, function (Handler) {
-  React.render(<Handler/>, document.body);
+    React.render(<Handler/>, document.body);
 });
