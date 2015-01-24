@@ -15,6 +15,7 @@ var Container = React.createClass({
 var routes = (
     <Route handler={Container} path="/">
         <DefaultRoute handler={Hello} />
+        <Route name="hello" handler={Hello} />
     </Route>
 );
 

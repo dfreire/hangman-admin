@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"os"
+	"path"
 
 	"github.com/codegangsta/negroni"
 	"github.com/gorilla/pat"
@@ -28,6 +29,7 @@ func main() {
 	}
 
 	router := pat.New()
+	router.Get("/{page}", hs.IndexHandler)
 	router.Post("/sign-up", hs.SignUpHandler)
 
 	n := negroni.Classic()
@@ -38,6 +40,11 @@ func main() {
 type handlers struct {
 	mailService mail.MailService
 	authService auth.AuthService
+}
+
+func (self *handlers) IndexHandler(res http.ResponseWriter, req *http.Request) {
+	fp := path.Join("public", "index.html")
+	http.ServeFile(res, req, fp)
 }
 
 func (self *handlers) SignUpHandler(res http.ResponseWriter, req *http.Request) {
