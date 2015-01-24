@@ -1,12 +1,6 @@
+import {React} from "globals/react"
+import {Router, Route, RouteHandler, DefaultRoute, NotFoundRoute, Redirect, Link} from "globals/react-router"
 import {Hello} from "hello";
-
-var Router        = ReactRouter;
-var Route         = ReactRouter.Route;
-var RouteHandler  = ReactRouter.RouteHandler;
-var DefaultRoute  = ReactRouter.DefaultRoute;
-var NotFoundRoute = ReactRouter.NotFoundRoute;
-var Redirect      = ReactRouter.Redirect;
-var Link          = ReactRouter.Link;
 
 var Container = React.createClass({
     render: function() {
