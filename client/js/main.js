@@ -1,6 +1,6 @@
 import {React} from "globals/react"
 import {Router, Route, RouteHandler, DefaultRoute, NotFoundRoute, Redirect, Link} from "globals/react-router"
-import {Hello} from "hello";
+import {SignUp} from "sign-up";
 
 var Container = React.createClass({
     render: function() {
@@ -14,8 +14,8 @@ var Container = React.createClass({
 
 var routes = (
     <Route handler={Container} path="/">
-        <DefaultRoute handler={Hello} />
-        <Route name="hello" handler={Hello} />
+        <DefaultRoute handler={SignUp} />
+        <Route name="sign-up" handler={SignUp} />
     </Route>
 );
 
