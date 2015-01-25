@@ -14,7 +14,7 @@ var Container = React.createClass({
 
 var routes = (
     <Route handler={Container} path="/">
-        <DefaultRoute handler={SignUp} />
+        <Redirect from="/" to="sign-up" />
         <Route name="sign-up" handler={SignUp} />
     </Route>
 );
