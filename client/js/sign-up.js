@@ -6,10 +6,10 @@ export var SignUp = React.createClass({
         return {email: "", password: ""};
     },
     setEmail: function(e) {
-        this.state.email = e.target.value;
+        this.setState({email: e.target.value});
     },
     setPassword: function(e) {
-        this.state.password = e.target.value;
+        this.setState({password: e.target.value});
     },
     onSignUp: function(e) {
         e.preventDefault()
@@ -29,7 +29,7 @@ export var SignUp = React.createClass({
                 <form role="form" onSubmit={this.onSignUp}>
                     <div className="form-group">
                         <label>Email</label>
-                        <input type="email" className="form-control" onChange={this.setEmail} value={this.state.email} />
+                        <input type="text" className="form-control" onChange={this.setEmail} value={this.state.email} />
                     </div>
                     <div className="form-group">
                         <label>Password</label>
