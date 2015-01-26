@@ -6,6 +6,8 @@
         "lodash": "*",
         "requirejs": "*",
         "react": "*",
-        "react-router": "*"
+        "react-router": "*",
+        "bootstrap": "*",
+        "fontawesome": "*"
     }
 }
