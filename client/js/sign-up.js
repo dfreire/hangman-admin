@@ -1,5 +1,6 @@
 import {React} from "globals/react"
 import {Link} from "globals/react-router"
+import {PasswordInput} from "widgets/inputs"
 
 export var SignUp = React.createClass({
     getInitialState: function() {
@@ -8,12 +9,9 @@ export var SignUp = React.createClass({
     setEmail: function(e) {
         this.setState({email: e.target.value});
     },
-    setPassword: function(e) {
-        this.setState({password: e.target.value});
-    },
     onSignUp: function(e) {
-        e.preventDefault()
-        console.warn(this.state)
+        e.preventDefault();
+        console.warn(this.state, this.refs.myPassword.getValue());
     },
     render: function() {
         return (
@@ -33,7 +31,7 @@ export var SignUp = React.createClass({
                     </div>
                     <div className="form-group">
                         <label>Password</label>
-                        <input type="password" className="form-control" onChange={this.setPassword} value={this.state.password} />
+                        <PasswordInput ref="myPassword" />
                     </div>
                     <div className="form-group">
                         <p className="text-justify">
