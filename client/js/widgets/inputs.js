@@ -16,3 +16,20 @@ export var PasswordInput = React.createClass({
         );
     }
 });
+
+export var EmailInput = React.createClass({
+    getInitialState: function() {
+        return {value: ""};
+    },
+    setValue: function(e) {
+        this.setState({value: e.target.value});
+    },
+    getValue: function() {
+        return this.state.value;
+    },
+    render: function() {
+        return (
+            <input type="text" className="form-control" onChange={this.setValue} value={this.state.value} />
+        );
+    }
+});

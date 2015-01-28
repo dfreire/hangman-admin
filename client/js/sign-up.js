@@ -1,17 +1,13 @@
 import {React} from "globals/react"
 import {Link} from "globals/react-router"
-import {PasswordInput} from "widgets/inputs"
+import {EmailInput, PasswordInput} from "widgets/inputs"
 
 export var SignUp = React.createClass({
-    getInitialState: function() {
-        return {email: "", password: ""};
-    },
-    setEmail: function(e) {
-        this.setState({email: e.target.value});
-    },
     onSignUp: function(e) {
         e.preventDefault();
-        console.warn(this.state, this.refs.myPassword.getValue());
+        var email    = this.refs.myEmail.getValue();
+        var password = this.refs.myPassword.getValue();
+        console.warn(email, password);
     },
     render: function() {
         return (
@@ -27,7 +23,7 @@ export var SignUp = React.createClass({
                 <form role="form" onSubmit={this.onSignUp}>
                     <div className="form-group">
                         <label>Email</label>
-                        <input type="text" className="form-control" onChange={this.setEmail} value={this.state.email} />
+                        <EmailInput ref="myEmail" />
                     </div>
                     <div className="form-group">
                         <label>Password</label>
