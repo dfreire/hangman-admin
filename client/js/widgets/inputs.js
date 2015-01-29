@@ -19,7 +19,7 @@ export var PasswordInput = React.createClass({
 
 export var EmailInput = React.createClass({
     getInitialState: function() {
-        return {value: ""};
+        return {value: "", isValid: true};
     },
     setValue: function(e) {
         this.setState({value: e.target.value});
@@ -28,16 +28,25 @@ export var EmailInput = React.createClass({
         return this.state.value;
     },
     validate: function(fn) { 
+        var isValid = true;
         if (_.isFunction(fn)) {
-            return fn(this.state.value);
+            isValid = fn(this.state.value);
         } else {
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(this.state.value);
+            isValid = re.test(this.state.value);
         }
+        console.warn("isValid", isValid);
+        this.setState({isValid: isValid});
+        return isValid;
     },
     render: function() {
+        var cx = React.addons.classSet;
+        var classes = cx({
+            'form-control': true,
+            'has-error': !this.state.isValid
+        });
         return (
-            <input type="text" className="form-control" onChange={this.setValue} value={this.state.value} />
+            <input type="text" className={classes} onChange={this.setValue} value={this.state.value} />
         );
     }
 });
