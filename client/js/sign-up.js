@@ -1,13 +1,16 @@
-import {React} from "globals/react"
-import {Link} from "globals/react-router"
-import {EmailInput, PasswordInput} from "widgets/inputs"
+import {React} from "globals/react";
+import {Link} from "globals/react-router";
+import {EmailInput, PasswordInput} from "widgets/inputs";
+import {Post} from "ajax";
 
 export var SignUp = React.createClass({
     onSignUp: function(e) {
         e.preventDefault();
-        var email    = this.refs.myEmail.getValue();
-        var password = this.refs.myPassword.getValue();
-        console.warn(email, password);
+        var data = {
+            email:     this.refs.myEmail.getValue(),
+            password:  this.refs.myPassword.getValue()
+        };
+        Post("/sign-up", data);
     },
     render: function() {
         return (
