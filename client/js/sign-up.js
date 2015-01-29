@@ -6,12 +6,14 @@ import {Post} from "ajax";
 export var SignUp = React.createClass({
     onSignUp: function(e) {
         e.preventDefault();
-        var requestData = {
-            email:     this.refs.myEmail.getValue(),
-            password:  this.refs.myPassword.getValue()
-        };
-        Post("/sign-up", requestData, function(responseData) {
-        });
+        if (this.refs.myEmail.validate()) {
+            var requestData = {
+                email:     this.refs.myEmail.getValue(),
+                password:  this.refs.myPassword.getValue()
+            };
+            Post("/sign-up", requestData, function(responseData) {
+            });
+        }
     },
     render: function() {
         return (
