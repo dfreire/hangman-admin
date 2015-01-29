@@ -37,6 +37,36 @@ func main() {
 	n.Run(":3001")
 }
 
+type Response struct {
+	Ok   bool        `json:"ok"`
+	Data interface{} `json:"data,omitempty"`
+	Err  string      `json:"err,omitempty"`
+}
+
+func sendOkResponse(res http.ResponseWriter, data interface{}) {
+	res.Header().Set("Content-Type", "application/json")
+	response := Response{
+		Ok:   true,
+		Data: data,
+	}
+	if err := json.NewEncoder(res).Encode(&response); err != nil {
+		http.Error(res, err.Error(), http.StatusInternalServerError)
+		return
+	}
+}
+
+func sendErrorResponse(res http.ResponseWriter, message string) {
+	res.Header().Set("Content-Type", "application/json")
+	response := Response{
+		Ok:  false,
+		Err: message,
+	}
+	if err := json.NewEncoder(res).Encode(&response); err != nil {
+		http.Error(res, err.Error(), http.StatusInternalServerError)
+		return
+	}
+}
+
 type handlers struct {
 	mailService mail.MailService
 	authService auth.AuthService
@@ -60,7 +90,7 @@ func (self *handlers) SignUpHandler(res http.ResponseWriter, req *http.Request) 
 
 	verificationToken, err := self.authService.SignUp("guijs", paramEmail, paramPassword)
 	if err != nil {
-		http.Error(res, err.Error(), http.StatusInternalServerError)
+		sendErrorResponse(res, err.Error())
 		return
 	}
 
@@ -75,10 +105,5 @@ func (self *handlers) SignUpHandler(res http.ResponseWriter, req *http.Request) 
 		return
 	}
 
-	res.Header().Set("Content-Type", "application/json")
-	err = json.NewEncoder(res).Encode(verificationToken)
-	if err != nil {
-		http.Error(res, err.Error(), http.StatusInternalServerError)
-		return
-	}
+	sendOkResponse(res, verificationToken)
 }
