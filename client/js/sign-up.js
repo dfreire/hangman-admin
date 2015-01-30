@@ -27,14 +27,8 @@ export var SignUp = React.createClass({
             </div>
             <div className="panel-body">
                 <form role="form" onSubmit={this.onSignUp}>
-                    <div className="form-group">
-                        <label>Email</label>
-                        <EmailInput ref="myEmail" />
-                    </div>
-                    <div className="form-group">
-                        <label>Password</label>
-                        <PasswordInput ref="myPassword" />
-                    </div>
+                    <EmailInput ref="myEmail" />
+                    <PasswordInput ref="myPassword" />
                     <div className="form-group">
                         <p className="text-justify">
                             By signing up you are agreeing to our <a href="/terms-of-service">terms of service</a> and <a href="/privacy-policy">privacy policy</a>.

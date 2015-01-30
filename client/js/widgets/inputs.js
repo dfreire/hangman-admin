@@ -1,22 +1,5 @@
 import {React} from "globals/react"
 
-export var PasswordInput = React.createClass({
-    getInitialState: function() {
-        return {value: ""};
-    },
-    setValue: function(e) {
-        this.setState({value: e.target.value});
-    },
-    getValue: function() {
-        return this.state.value;
-    },
-    render: function() {
-        return (
-            <input type="password" className="form-control" onChange={this.setValue} value={this.state.value} />
-        );
-    }
-});
-
 export var EmailInput = React.createClass({
     getInitialState: function() {
         return {value: "", isValid: true};
@@ -35,18 +18,41 @@ export var EmailInput = React.createClass({
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             isValid = re.test(this.state.value);
         }
-        console.warn("isValid", isValid);
         this.setState({isValid: isValid});
         return isValid;
     },
     render: function() {
         var cx = React.addons.classSet;
         var classes = cx({
-            'form-control': true,
-            'has-error': !this.state.isValid
+            'form-group':    true,
+            'has-feedback':  !this.state.isValid,
+            'has-error':     !this.state.isValid
         });
         return (
-            <input type="text" className={classes} onChange={this.setValue} value={this.state.value} />
+            <div className={classes}>
+                <label className="control-label">Email</label>
+                <input type="text" className="form-control" onChange={this.setValue} value={this.state.value} />
+            </div>
+        );
+    }
+});
+
+export var PasswordInput = React.createClass({
+    getInitialState: function() {
+        return {value: ""};
+    },
+    setValue: function(e) {
+        this.setState({value: e.target.value});
+    },
+    getValue: function() {
+        return this.state.value;
+    },
+    render: function() {
+        return (
+            <div className="form-group">
+                <label>Password</label>
+                <input type="password" className="form-control" onChange={this.setValue} value={this.state.value} />
+            </div>
         );
     }
 });
