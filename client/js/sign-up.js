@@ -7,10 +7,10 @@ export var SignUp = React.createClass({
     onSignUp: function(e) {
         e.preventDefault();
         var isValid = true;
-        if (this.refs.myEmail.validate()) {
+        if (!this.refs.myEmail.validate()) {
             isValid = false;
         }
-        if (this.refs.myPassword.validate()) {
+        if (!this.refs.myPassword.validate()) {
             isValid = false;
         }
         if (isValid) {

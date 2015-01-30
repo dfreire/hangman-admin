@@ -72,7 +72,7 @@ export var PasswordInput = React.createClass({
         });
         return (
             <div className={classes}>
-                <label>Password</label>
+                <label className="control-label">Password</label>
                 <input type="password" className="form-control" onChange={this.setValue} value={this.state.value} />
             </div>
         );
