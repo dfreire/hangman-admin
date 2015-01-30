@@ -1,6 +1,7 @@
 import {React} from "globals/react";
 import {Link} from "globals/react-router";
-import {EmailInput, PasswordInput} from "widgets/inputs";
+import {EmailInput} from "widgets/email-input";
+import {PasswordInput} from "widgets/password-input";
 import {Post} from "ajax";
 
 export var SignUp = React.createClass({

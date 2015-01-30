@@ -28,52 +28,15 @@ export var EmailInput = React.createClass({
             'has-feedback':  !this.state.isValid,
             'has-error':     !this.state.isValid
         });
+        var helpClasses = cx({
+            'hidden':       this.state.isValid,
+            'text-danger':  true
+        });
         return (
             <div className={classes}>
                 <label className="control-label">Email</label>
                 <input type="text" className="form-control" onChange={this.setValue} value={this.state.value} />
-            </div>
-        );
-    }
-});
-
-export var PasswordInput = React.createClass({
-    getInitialState: function() {
-        return {value: "", isValid: true};
-    },
-    setValue: function(e) {
-        this.setState({value: e.target.value});
-    },
-    getValue: function() {
-        return this.state.value;
-    },
-    validate: function(fn) { 
-        var isValid = true;
-        if (_.isFunction(fn)) {
-            isValid = fn(this.state.value);
-        } else {
-            var value = this.state.value;
-            if (!_.isString(value)) {
-                isValid = false;
-            }
-            if (value.length < 8) {
-                isValid = false;
-            }
-        }
-        this.setState({isValid: isValid});
-        return isValid;
-    },
-    render: function() {
-        var cx = React.addons.classSet;
-        var classes = cx({
-            'form-group':    true,
-            'has-feedback':  !this.state.isValid,
-            'has-error':     !this.state.isValid
-        });
-        return (
-            <div className={classes}>
-                <label className="control-label">Password</label>
-                <input type="password" className="form-control" onChange={this.setValue} value={this.state.value} />
+                <small className={helpClasses}>The email address is not valid.</small>
             </div>
         );
     }
