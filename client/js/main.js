@@ -1,6 +1,7 @@
 import {React} from "globals/react"
 import {Router, Route, RouteHandler, DefaultRoute, NotFoundRoute, Redirect, Link} from "globals/react-router"
 import {SignUp} from "sign-up";
+import {VerifyEmail} from "verify-email";
 
 var Container = React.createClass({
     render: function() {
@@ -16,6 +17,7 @@ var routes = (
     <Route handler={Container} path="/">
         <Redirect from="/" to="sign-up" />
         <Route name="sign-up" handler={SignUp} />
+        <Route name="verify-email" path="/verify-email/:token" handler={VerifyEmail} />
     </Route>
 );
 

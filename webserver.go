@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 	"path"
+	"strings"
 
 	"github.com/codegangsta/negroni"
 	"github.com/gorilla/pat"
@@ -98,7 +99,9 @@ func (self *handlers) SignUpHandler(res http.ResponseWriter, req *http.Request) 
 	e.From = "puffinframework@mailinator.com"
 	e.To = []string{paramEmail}
 	e.Subject = "Welcome to PuffinFramework"
-	e.HTML = []byte(verificationToken)
+
+	html := strings.Join([]string{"<a href='http://localhost:3001/verify-email/", verificationToken, "'>verify your email</a>"}, "")
+	e.HTML = []byte(html)
 
 	if err := self.mailService.Send(e); err != nil {
 		http.Error(res, err.Error(), http.StatusInternalServerError)
