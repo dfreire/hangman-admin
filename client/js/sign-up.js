@@ -5,8 +5,13 @@ import {PasswordInput} from "widgets/password-input";
 import {Post} from "ajax";
 
 export var SignUp = React.createClass({
+    getInitialState: function() {
+        return { hasSignedUp: false };
+    },
+
     onSignUp: function(e) {
         e.preventDefault();
+
         var isValid = true;
         if (!this.refs.myEmail.validate()) {
             isValid = false;
@@ -14,22 +19,40 @@ export var SignUp = React.createClass({
         if (!this.refs.myPassword.validate()) {
             isValid = false;
         }
+
         if (isValid) {
             var requestData = {
                 email:     this.refs.myEmail.getValue(),
                 password:  this.refs.myPassword.getValue()
             };
+            var that = this;
             Post("/sign-up", requestData, function(responseData) {
+                that.setState({hasSignedUp: true});
             });
         }
     },
+
     render: function() {
+        var cx = React.addons.classSet;
+
+        var panelClasses = cx({
+            'panel':          true,
+            'panel-default':  true,
+            'hidden':         this.state.hasSignedUp
+        });
+
+        var confirmationClasses =  cx({
+            'alert':          true,
+            'alert-success':  true,
+            'hidden':         !this.state.hasSignedUp
+        });
+
         return (
             <div className="my-screen-center">
             <div className="row">
             <div className="col-md-4 col-md-offset-4">
 
-            <div className="panel panel-default">
+            <div className={panelClasses}>
             <div className="panel-heading">
                 <h3 className="panel-title">Sign Up</h3>
             </div>
@@ -52,6 +75,11 @@ export var SignUp = React.createClass({
                     </div>
                 </form>
             </div>
+            </div>
+
+            <div className={confirmationClasses} role="alert">
+                <p>We have sent you an email with a verification link.</p>
+                <p>Please verify your account by clicking that link.</p>
             </div>
 
             </div>
