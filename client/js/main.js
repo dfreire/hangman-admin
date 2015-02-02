@@ -15,9 +15,11 @@ var Container = React.createClass({
 
 var routes = (
     <Route handler={Container} path="/">
-        <Redirect from="/" to="sign-up" />
-        <Route name="sign-up" handler={SignUp} />
-        <Route name="verify-email" path="/verify-email/:token" handler={VerifyEmail} />
+        <Redirect from="/" to="/en/sign-up" />
+        <Route name="en">
+            <Route name="sign-up" handler={SignUp} />
+            <Route name="verify-email" path="/verify-email/:token" handler={VerifyEmail} />
+        </Route>
     </Route>
 );
 
