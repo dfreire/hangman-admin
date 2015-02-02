@@ -3,12 +3,6 @@ import {Router, Route, RouteHandler, DefaultRoute, NotFoundRoute, Redirect, Link
 import {SignUp} from "sign-up";
 import {VerifyEmail} from "verify-email";
 
-var Root = React.createClass({
-    render: function() {
-        return ( <RouteHandler/> );
-    }
-});
-
 var Container = React.createClass({
     render: function() {
         return (
@@ -19,10 +13,16 @@ var Container = React.createClass({
     }
 });
 
+var Lang = React.createClass({
+    render: function() {
+        return ( <RouteHandler/> );
+    }
+});
+
 var routes = (
-    <Route handler={Root} path="/">
+    <Route handler={Container} path="/">
         <Redirect from="/" to="sign-up" />
-        <Route name="en" handler={Container}>
+        <Route name="en" handler={Lang}>
             <Route name="sign-up" handler={SignUp} />
             <Route name="verify-email" path="/verify-email/:token" handler={VerifyEmail} />
         </Route>

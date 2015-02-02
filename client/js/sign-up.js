@@ -4,6 +4,8 @@ import {EmailInput} from "widgets/email-input";
 import {PasswordInput} from "widgets/password-input";
 import {Post} from "ajax";
 
+import {i18n} from "sign-up-en";
+
 export var SignUp = React.createClass({
     getInitialState: function() {
         return { hasSignedUp: false };
@@ -54,22 +56,20 @@ export var SignUp = React.createClass({
 
             <div className={panelClasses}>
             <div className="panel-heading">
-                <h3 className="panel-title">Sign Up</h3>
+                <h3 className="panel-title">{i18n.PanelTitle}</h3>
             </div>
             <div className="panel-body">
                 <form role="form" onSubmit={this.onSignUp}>
                     <EmailInput ref="myEmail" />
                     <PasswordInput ref="myPassword" />
                     <div className="form-group">
-                        <p className="text-justify">
-                            By signing up you are agreeing to our <a href="/terms-of-service">terms of service</a> and <a href="/privacy-policy">privacy policy</a>.
-                        </p>
+                        <p className="text-justify">{i18n.AgreementText}</p>
                     </div>
                     <div className="form-group">
-                        <button className="btn btn-primary btn-block">Sign Up</button>
+                        <button className="btn btn-primary btn-block">{i18n.SignUpButton}</button>
                     </div>
                     <div className="form-group">
-                        <p className="text-center">or</p>
+                        <p className="text-center" dangerouslySetInnerHTML={{__html: i18n.TextBetweenButtons}}></p>
                     </div>
                     <div className="form-group">
                     </div>
