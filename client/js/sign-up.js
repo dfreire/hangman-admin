@@ -63,13 +63,13 @@ export var SignUp = React.createClass({
                     <EmailInput ref="myEmail" />
                     <PasswordInput ref="myPassword" />
                     <div className="form-group">
-                        <p className="text-justify">{i18n.AgreementText}</p>
+                        <p className="text-justify" dangerouslySetInnerHTML={{__html: i18n.AgreementText}} />
                     </div>
                     <div className="form-group">
                         <button className="btn btn-primary btn-block">{i18n.SignUpButton}</button>
                     </div>
                     <div className="form-group">
-                        <p className="text-center" dangerouslySetInnerHTML={{__html: i18n.TextBetweenButtons}}></p>
+                        <p className="text-center">{i18n.TextBetweenButtons}</p>
                     </div>
                     <div className="form-group">
                     </div>
