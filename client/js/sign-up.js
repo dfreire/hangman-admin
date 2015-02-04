@@ -4,7 +4,7 @@ import {EmailInput} from "widgets/email-input";
 import {PasswordInput} from "widgets/password-input";
 import {Post} from "ajax";
 
-import {i18n} from "sign-up-en";
+import {i18n} from "sign-up_en";
 
 export var SignUp = React.createClass({
     getInitialState: function() {
