@@ -1,5 +1,5 @@
 import {React} from "globals/react";
-import {Link} from "globals/react-router";
+import {Router, Link} from "globals/react-router";
 import {EmailInput} from "widgets/email-input";
 import {PasswordInput} from "widgets/password-input";
 import {Post} from "ajax";
@@ -7,7 +7,10 @@ import {Post} from "ajax";
 import {i18n} from "sign-up_en";
 
 export var SignUp = React.createClass({
+    mixins: [Router.State],
+
     getInitialState: function() {
+        console.log(this.getParams());
         return { hasSignedUp: false };
     },
 

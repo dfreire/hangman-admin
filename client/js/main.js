@@ -21,11 +21,9 @@ var Lang = React.createClass({
 
 var routes = (
     <Route handler={Container} path="/">
-        <Redirect from="/" to="sign-up" />
-        <Route name="en" handler={Lang}>
-            <Route name="sign-up" handler={SignUp} />
-            <Route name="verify-email" path="/verify-email/:token" handler={VerifyEmail} />
-        </Route>
+        <Redirect from="/" to="/en/sign-up" />
+        <Route name="sign-up"      path="/:lang/sign-up" handler={SignUp} />
+        <Route name="verify-email" path="/:lang/verify-email/:token" handler={VerifyEmail} />
     </Route>
 );
 
