@@ -84,10 +84,7 @@ export var SignUp = React.createClass({
             </div>
             </div>
 
-            <div className={confirmationClasses} role="alert">
-                <p>We have sent you an email with a verification link.</p>
-                <p>Please verify your account by clicking that link.</p>
-            </div>
+            <div className={confirmationClasses} role="alert" dangerouslySetInnerHTML={{__html: this.getI18N("ConfirmationMessage")}} />
 
             </div>
             </div>
