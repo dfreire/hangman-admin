@@ -3,15 +3,19 @@ import {Router, Link} from "globals/react-router";
 import {EmailInput} from "widgets/email-input";
 import {PasswordInput} from "widgets/password-input";
 import {Post} from "ajax";
-
-import {i18n} from "sign-up_en";
+import {i18n} from "sign-up-i18n";
 
 export var SignUp = React.createClass({
     mixins: [Router.State],
 
     getInitialState: function() {
-        console.log(this.getParams());
-        return { hasSignedUp: false };
+        var state = { params: this.getParams(), hasSignedUp: false };
+        console.log(state.params.lang);
+        return state;
+    },
+
+    getI18N: function(key) {
+        return i18n[key][this.state.params.lang]
     },
 
     onSignUp: function(e) {
@@ -59,20 +63,20 @@ export var SignUp = React.createClass({
 
             <div className={panelClasses}>
             <div className="panel-heading">
-                <h3 className="panel-title">{i18n.PanelTitle}</h3>
+                <h3 className="panel-title">{this.getI18N("PanelTitle")}</h3>
             </div>
             <div className="panel-body">
                 <form role="form" onSubmit={this.onSignUp}>
                     <EmailInput ref="myEmail" />
                     <PasswordInput ref="myPassword" />
                     <div className="form-group">
-                        <p className="text-justify" dangerouslySetInnerHTML={{__html: i18n.AgreementText}} />
+                        <p className="text-justify" dangerouslySetInnerHTML={{__html: this.getI18N("AgreementText")}} />
                     </div>
                     <div className="form-group">
-                        <button className="btn btn-primary btn-block">{i18n.SignUpButton}</button>
+                        <button className="btn btn-primary btn-block">{this.getI18N("SignUpButton")}</button>
                     </div>
                     <div className="form-group">
-                        <p className="text-center">{i18n.TextBetweenButtons}</p>
+                        <p className="text-center">{this.getI18N("TextBetweenButtons")}</p>
                     </div>
                     <div className="form-group">
                     </div>
