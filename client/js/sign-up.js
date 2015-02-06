@@ -18,9 +18,7 @@ export var SignUp = React.createClass({
         return i18n[key][this.state.params.lang]
     },
 
-    onSignUp: function(e) {
-        e.preventDefault();
-
+    validate: function() {
         var isValid = true;
         if (!this.refs.myEmail.validate()) {
             isValid = false;
@@ -28,8 +26,12 @@ export var SignUp = React.createClass({
         if (!this.refs.myPassword.validate()) {
             isValid = false;
         }
+        return isValid;
+    },
 
-        if (isValid) {
+    onSignUp: function(e) {
+        e.preventDefault();
+        if (this.validate()) {
             var requestData = {
                 email:     this.refs.myEmail.getValue(),
                 password:  this.refs.myPassword.getValue()
