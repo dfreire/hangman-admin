@@ -3,9 +3,9 @@ import {Router, Link} from "globals/react-router";
 import {EmailInput} from "widgets/email-input";
 import {PasswordInput} from "widgets/password-input";
 import {Post} from "ajax";
-import {i18n} from "sign-up-i18n";
+import {i18n} from "sign-in-i18n";
 
-export var SignUp = React.createClass({
+export var SignIn = React.createClass({
     mixins: [Router.State],
 
     getInitialState: function() {
@@ -14,7 +14,12 @@ export var SignUp = React.createClass({
     },
 
     getI18N: function(key) {
-        return i18n[key][this.state.params.lang]
+        try {
+            return i18n[key][this.state.params.lang]
+        } catch (err) {
+            console.warn(key);
+            console.error(err);
+        }
     },
 
     linkTo: function(link) {
@@ -32,7 +37,7 @@ export var SignUp = React.createClass({
         return isValid;
     },
 
-    onSignUp: function(e) {
+    onSignIn: function(e) {
         e.preventDefault();
         if (this.validate()) {
             var requestData = {
@@ -72,26 +77,23 @@ export var SignUp = React.createClass({
                 <h3 className="panel-title">{this.getI18N("PanelTitle")}</h3>
             </div>
             <div className="panel-body">
-                <form role="form" onSubmit={this.onSignUp}>
+                <form role="form" onSubmit={this.onSignIn}>
                     <EmailInput ref="myEmail" />
                     <PasswordInput ref="myPassword" />
                     <div className="form-group">
-                        <p className="text-justify" dangerouslySetInnerHTML={{__html: this.getI18N("AgreementText")}} />
-                    </div>
-                    <div className="form-group">
-                        <button className="btn btn-primary btn-block">{this.getI18N("SignUpButton")}</button>
+                        <button className="btn btn-primary btn-block">{this.getI18N("SignInButton")}</button>
                     </div>
                     <div className="form-group">
                         <p className="text-center">{this.getI18N("TextBetweenButtons")}</p>
                     </div>
                     <div className="form-group">
-                        <Link to={this.linkTo("sign-in")} className="btn btn-default btn-block">{this.getI18N("SignInButton")}</Link>
+                        <Link to={this.linkTo("sign-up")} className="btn btn-default btn-block">{this.getI18N("SignUpButton")}</Link>
                     </div>
                 </form>
             </div>
             </div>
 
-            <div className={confirmationClasses} role="alert" dangerouslySetInnerHTML={{__html: this.getI18N("ConfirmationMessage")}} />
+            <div className={confirmationClasses} role="alert" dangerouslySetInnerHTML={{__html: this.getI18N("SignInButton")}} />
 
             </div>
             </div>
@@ -99,3 +101,4 @@ export var SignUp = React.createClass({
         );
     }
 });
+

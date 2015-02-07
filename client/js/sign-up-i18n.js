@@ -11,14 +11,16 @@ export var i18n = {
         en: "Sign Up",
         pt: "Registar"
     },
+    SignInButton: {
+        en: "Sign In",
+        pt: "Entrar"
+    },
     TextBetweenButtons: {
         en:"or",
         pt: "ou"
     },
     ConfirmationMessage: {
         en: "<p>In a few moments you will receive an email with a verification link.</p><p>Please verify your account by clicking that link.</p>",
-        pt: "<p>Dentro de uns instantes receberá um mail com um link de verificação.</p><p>Por favor verifique a sua conta clicando nesse link.</p>"
-    },
-    VerificationEmail: {
+        pt: "<p>Dentro de alguns instantes receberá um mail com um link de verificação.</p><p>Por favor verifique a sua conta clicando nesse link.</p>"
     }
 };
