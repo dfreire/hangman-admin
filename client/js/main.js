@@ -3,6 +3,7 @@ import {Router, Route, RouteHandler, DefaultRoute, NotFoundRoute, Redirect, Link
 import {SignUp} from "sign-up";
 import {SignIn} from "sign-in";
 import {VerifyEmail} from "verify-email";
+import {Dashboard} from "dashboard";
 
 var Container = React.createClass({
     render: function() {
@@ -24,8 +25,9 @@ var routes = (
     <Route handler={Container} path="/">
         <Redirect from="/" to="/en/sign-up" />
         <Route name="sign-up"      path="/:lang/sign-up"             handler={SignUp} />
-        <Route name="verify-email" path="/:lang/verify-email/:token" handler={VerifyEmail} />
         <Route name="sign-in"      path="/:lang/sign-in"             handler={SignIn} />
+        <Route name="verify-email" path="/:lang/verify-email/:token" handler={VerifyEmail} />
+        <Route name="dashboard"    path="/:lang/dashboard"           handler={Dashboard} />
     </Route>
 );
 
