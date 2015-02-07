@@ -61,7 +61,7 @@ export var SignIn = React.createClass({
             'hidden':         this.state.hasSignedUp
         });
 
-        var confirmationClasses = cx({
+        var accessDeniedMessageClasses = cx({
             'alert':          true,
             'alert-success':  true,
             'hidden':         !this.state.hasSignedUp
@@ -93,7 +93,7 @@ export var SignIn = React.createClass({
             </div>
             </div>
 
-            <div className={confirmationClasses} role="alert" dangerouslySetInnerHTML={{__html: this.getI18N("SignInButton")}} />
+            <div className={accessDeniedMessageClasses} role="alert" dangerouslySetInnerHTML={{__html: this.getI18N("AccessDeniedMessage")}} />
 
             </div>
             </div>
