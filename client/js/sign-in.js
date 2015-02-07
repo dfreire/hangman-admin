@@ -9,7 +9,7 @@ export var SignIn = React.createClass({
     mixins: [Router.State],
 
     getInitialState: function() {
-        var state = { params: this.getParams(), hasSignedUp: false };
+        var state = { params: this.getParams() };
         return state;
     },
 
@@ -41,13 +41,12 @@ export var SignIn = React.createClass({
         e.preventDefault();
         if (this.validate()) {
             var requestData = {
-                email:                 this.refs.myEmail.getValue(),
-                password:              this.refs.myPassword.getValue(),
-                verificationCallback:  this.state.params.lang + "/verify-email"
+                email:     this.refs.myEmail.getValue(),
+                password:  this.refs.myPassword.getValue(),
             };
             var that = this;
-            Post("/sign-up", requestData, function(responseData) {
-                that.setState({hasSignedUp: true});
+            Post("/sign-in", requestData, function(responseData) {
+                console.log("sign-in", responseData);
             });
         }
     },
@@ -62,9 +61,9 @@ export var SignIn = React.createClass({
         });
 
         var accessDeniedMessageClasses = cx({
-            'alert':          true,
-            'alert-success':  true,
-            'hidden':         !this.state.hasSignedUp
+            'alert':         true,
+            'alert-danger':  true,
+            'hidden':        !this.state.hasSignedUp
         });
 
         return (

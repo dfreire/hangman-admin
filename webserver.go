@@ -32,6 +32,7 @@ func main() {
 	router := pat.New()
 	router.Get("/{page}", hs.IndexHandler)
 	router.Post("/sign-up", hs.SignUpHandler)
+	router.Post("/sign-in", hs.SignInHandler)
 	router.Post("/verify-email", hs.VerifyEmailHandler)
 
 	n := negroni.Classic()
@@ -87,11 +88,11 @@ func (self *handlers) SignUpHandler(res http.ResponseWriter, req *http.Request) 
 		return
 	}
 
-	paramEmail := params["email"].(string)
-	paramPassword := params["password"].(string)
-	paramVerificationCallback := params["verificationCallback"].(string)
+	userEmail := params["email"].(string)
+	password := params["password"].(string)
+	verificationCallback := params["verificationCallback"].(string)
 
-	verificationToken, err := self.authService.SignUp("guijs", paramEmail, paramPassword)
+	verificationToken, err := self.authService.SignUp("guijs", userEmail, password)
 	if err != nil {
 		sendErrorResponse(res, err.Error())
 		return
@@ -99,10 +100,10 @@ func (self *handlers) SignUpHandler(res http.ResponseWriter, req *http.Request) 
 
 	e := email.NewEmail()
 	e.From = "puffinframework@mailinator.com"
-	e.To = []string{paramEmail}
+	e.To = []string{userEmail}
 	e.Subject = "Welcome to PuffinFramework"
 
-	html := strings.Join([]string{"<a href='http://localhost:3001/", paramVerificationCallback, "/", verificationToken, "'>verify your email</a>"}, "")
+	html := strings.Join([]string{"<a href='http://localhost:3001/", verificationCallback, "/", verificationToken, "'>verify your email</a>"}, "")
 	e.HTML = []byte(html)
 
 	if err := self.mailService.Send(e); err != nil {
@@ -111,6 +112,26 @@ func (self *handlers) SignUpHandler(res http.ResponseWriter, req *http.Request) 
 	}
 
 	sendOkResponse(res, verificationToken)
+}
+
+func (self *handlers) SignInHandler(res http.ResponseWriter, req *http.Request) {
+	params := make(map[string]interface{})
+	err := json.NewDecoder(req.Body).Decode(&params)
+	if err != nil {
+		http.Error(res, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	userEmail := params["email"].(string)
+	password := params["password"].(string)
+
+	sessionToken, err := self.authService.SignIn("guijs", userEmail, password)
+	if err != nil {
+		sendErrorResponse(res, err.Error())
+		return
+	}
+
+	sendOkResponse(res, sessionToken)
 }
 
 func (self *handlers) VerifyEmailHandler(res http.ResponseWriter, req *http.Request) {
