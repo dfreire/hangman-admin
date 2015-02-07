@@ -20,7 +20,7 @@ export var i18n = {
         pt: "ou"
     },
     ConfirmationMessage: {
-        en: "<h1>Thank you for signing up</h1><p>In a few moments you will receive an email with a confirmation link.</p><p>Please confirm your account by clicking that link.</p>",
-        pt: "<h1>Obrigado pelo seu registo</h1><p>Dentro de alguns instantes receberá um mail com um link de confirmação.</p><p>Por favor confirme a sua conta clicando nesse link.</p>"
+        en: "<h3>Thank you</h3><p>In a few moments you will receive an email with a confirmation link.</p><p>Please confirm your account by clicking that link.</p>",
+        pt: "<h3>Obrigado</h3><p>Dentro de alguns instantes receberá um mail com um link de confirmação.</p><p>Por favor confirme a sua conta clicando nesse link.</p>"
     }
 };
