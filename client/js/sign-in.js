@@ -69,7 +69,7 @@ export var SignIn = React.createClass({
         return (
             <div className="my-screen-center">
             <div className="row">
-            <div className="col-md-4 col-md-offset-4">
+            <div className="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
 
             <div className={panelClasses}>
             <div className="panel-heading">
