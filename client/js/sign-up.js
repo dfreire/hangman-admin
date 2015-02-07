@@ -33,8 +33,9 @@ export var SignUp = React.createClass({
         e.preventDefault();
         if (this.validate()) {
             var requestData = {
-                email:     this.refs.myEmail.getValue(),
-                password:  this.refs.myPassword.getValue()
+                email:                 this.refs.myEmail.getValue(),
+                password:              this.refs.myPassword.getValue(),
+                verificationCallback:  this.state.params.lang + "/verify-email"
             };
             var that = this;
             Post("/sign-up", requestData, function(responseData) {
@@ -52,7 +53,7 @@ export var SignUp = React.createClass({
             'hidden':         this.state.hasSignedUp
         });
 
-        var confirmationClasses =  cx({
+        var confirmationClasses = cx({
             'alert':          true,
             'alert-success':  true,
             'hidden':         !this.state.hasSignedUp

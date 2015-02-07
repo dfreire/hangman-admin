@@ -32,6 +32,7 @@ func main() {
 	router := pat.New()
 	router.Get("/{page}", hs.IndexHandler)
 	router.Post("/sign-up", hs.SignUpHandler)
+	router.Post("/verify-email", hs.VerifyEmailHandler)
 
 	n := negroni.Classic()
 	n.UseHandler(router)
@@ -88,6 +89,7 @@ func (self *handlers) SignUpHandler(res http.ResponseWriter, req *http.Request) 
 
 	paramEmail := params["email"].(string)
 	paramPassword := params["password"].(string)
+	paramVerificationCallback := params["verificationCallback"].(string)
 
 	verificationToken, err := self.authService.SignUp("guijs", paramEmail, paramPassword)
 	if err != nil {
@@ -100,11 +102,30 @@ func (self *handlers) SignUpHandler(res http.ResponseWriter, req *http.Request) 
 	e.To = []string{paramEmail}
 	e.Subject = "Welcome to PuffinFramework"
 
-	html := strings.Join([]string{"<a href='http://localhost:3001/verify-email/", verificationToken, "'>verify your email</a>"}, "")
+	html := strings.Join([]string{"<a href='http://localhost:3001/", paramVerificationCallback, "/", verificationToken, "'>verify your email</a>"}, "")
 	e.HTML = []byte(html)
 
 	if err := self.mailService.Send(e); err != nil {
 		http.Error(res, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	sendOkResponse(res, verificationToken)
+}
+
+func (self *handlers) VerifyEmailHandler(res http.ResponseWriter, req *http.Request) {
+	params := make(map[string]interface{})
+	err := json.NewDecoder(req.Body).Decode(&params)
+	if err != nil {
+		http.Error(res, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	verificationToken := params["token"].(string)
+
+	err = self.authService.VerifyEmail(verificationToken)
+	if err != nil {
+		sendErrorResponse(res, err.Error())
 		return
 	}
 
