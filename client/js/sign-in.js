@@ -22,7 +22,7 @@ var i18n = {
         pt: "ou"
     },
     AccessDeniedMessage: {
-        en: "Access Deneid: There is no user with that email and password in our system.",
+        en: "Access Denied: There is no user with that email and password in our system.",
         pt: "Acesso Negado: Não existe nenhum utilizador com esse email e password no nosso sistema."
     }
 };
