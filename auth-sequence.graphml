@@ -312,7 +312,7 @@ Password</y:NodeLabel>
           <y:Geometry height="56.92374100719428" width="102.0" x="0.0" y="169.23209307553955"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="32.265625" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="35.564453125" x="33.2177734375" y="4.0">Reset
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="32.265625" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="75.466796875" x="13.2666015625" y="4.0">Reset Token
 Sent</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" textColor="#000000" visible="true" width="4.0" x="2.0" y="44.265625">
             <y:LabelModel>

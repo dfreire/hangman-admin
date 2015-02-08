@@ -4,6 +4,13 @@ import {Link} from "globals/react-router";
 import {Post} from "ajax";
 import {i18n} from "verify-email-i18n";
 
+var i18n = {
+    ConfirmedAccountText: {
+        en: "Your account has been confirmed.",
+        pt: "O seu registo foi confirmado."
+    }
+}
+
 export var VerifyEmail = React.createClass({
     mixins: [Router.State],
 

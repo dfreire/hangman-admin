@@ -3,7 +3,29 @@ import {Router, Link} from "globals/react-router";
 import {EmailInput} from "widgets/email-input";
 import {PasswordInput} from "widgets/password-input";
 import {Post} from "ajax";
-import {i18n} from "sign-in-i18n";
+
+var i18n = {
+    PanelTitle: {
+        en: "Sign In",
+        pt: "Entrar"
+    },
+    SignInButton: {
+        en: "Sign In",
+        pt: "Entrar"
+    },
+    SignUpButton: {
+        en: "Sign Up",
+        pt: "Registar"
+    },
+    TextBetweenButtons: {
+        en: "or",
+        pt: "ou"
+    },
+    AccessDeniedMessage: {
+        en: "Access Deneid: There is no user with that email and password in our system.",
+        pt: "Acesso Negado: Não existe nenhum utilizador com esse email e password no nosso sistema."
+    }
+};
 
 export var SignIn = React.createClass({
     mixins: [Router.State],

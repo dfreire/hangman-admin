@@ -2,6 +2,17 @@ import {React} from "globals/react";
 import {Router, Link} from "globals/react-router";
 import {i18n} from "dashboard-i18n";
 
+var i18n = {
+    Title: {
+        en: "Dashboard",
+        pt: "Painel"
+    },
+    SignOutButton: {
+        en: "Sign Out",
+        pt: "Sair"
+    }
+};
+
 export var Dashboard = React.createClass({
     mixins: [Router.State],
 
