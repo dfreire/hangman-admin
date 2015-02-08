@@ -3,7 +3,6 @@ import {Router, Link} from "globals/react-router";
 import {EmailInput} from "widgets/email-input";
 import {PasswordInput} from "widgets/password-input";
 import {Post} from "ajax";
-import {i18n} from "sign-up-i18n";
 
 var i18n = {
     PanelTitle: {
@@ -63,9 +62,9 @@ export var SignUp = React.createClass({
         e.preventDefault();
         if (this.validate()) {
             var requestData = {
-                email:                 this.refs.myEmail.getValue(),
-                password:              this.refs.myPassword.getValue(),
-                verificationCallback:  this.state.params.lang + "/verify-email"
+                email:     this.refs.myEmail.getValue(),
+                password:  this.refs.myPassword.getValue(),
+                callback:  this.state.params.lang + "/confirm-account"
             };
             var that = this;
             Post("/sign-up", requestData, function(responseData) {

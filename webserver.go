@@ -33,7 +33,7 @@ func main() {
 	router.Get("/{page}", hs.IndexHandler)
 	router.Post("/sign-up", hs.SignUpHandler)
 	router.Post("/sign-in", hs.SignInHandler)
-	router.Post("/verify-email", hs.VerifyEmailHandler)
+	router.Post("/confirm-account", hs.ConfirmAccountHandler)
 
 	n := negroni.Classic()
 	n.UseHandler(router)
@@ -90,9 +90,9 @@ func (self *handlers) SignUpHandler(res http.ResponseWriter, req *http.Request) 
 
 	userEmail := params["email"].(string)
 	password := params["password"].(string)
-	verificationCallback := params["verificationCallback"].(string)
+	callback := params["callback"].(string)
 
-	verificationToken, err := self.authService.SignUp("guijs", userEmail, password)
+	confirmationToken, err := self.authService.SignUp("guijs", userEmail, password)
 	if err != nil {
 		sendErrorResponse(res, err.Error())
 		return
@@ -103,7 +103,7 @@ func (self *handlers) SignUpHandler(res http.ResponseWriter, req *http.Request) 
 	e.To = []string{userEmail}
 	e.Subject = "Welcome to PuffinFramework"
 
-	html := strings.Join([]string{"<a href='http://localhost:3001/", verificationCallback, "/", verificationToken, "'>verify your email</a>"}, "")
+	html := strings.Join([]string{"<a href='http://localhost:3001/", callback, "/", confirmationToken, "'>confirm your account</a>"}, "")
 	e.HTML = []byte(html)
 
 	if err := self.mailService.Send(e); err != nil {
@@ -111,7 +111,7 @@ func (self *handlers) SignUpHandler(res http.ResponseWriter, req *http.Request) 
 		return
 	}
 
-	sendOkResponse(res, verificationToken)
+	sendOkResponse(res, confirmationToken)
 }
 
 func (self *handlers) SignInHandler(res http.ResponseWriter, req *http.Request) {
@@ -134,7 +134,7 @@ func (self *handlers) SignInHandler(res http.ResponseWriter, req *http.Request) 
 	sendOkResponse(res, sessionToken)
 }
 
-func (self *handlers) VerifyEmailHandler(res http.ResponseWriter, req *http.Request) {
+func (self *handlers) ConfirmAccountHandler(res http.ResponseWriter, req *http.Request) {
 	params := make(map[string]interface{})
 	err := json.NewDecoder(req.Body).Decode(&params)
 	if err != nil {
@@ -142,13 +142,13 @@ func (self *handlers) VerifyEmailHandler(res http.ResponseWriter, req *http.Requ
 		return
 	}
 
-	verificationToken := params["token"].(string)
+	confirmationToken := params["token"].(string)
 
-	err = self.authService.VerifyEmail(verificationToken)
+	err = self.authService.VerifyEmail(confirmationToken)
 	if err != nil {
 		sendErrorResponse(res, err.Error())
 		return
 	}
 
-	sendOkResponse(res, verificationToken)
+	sendOkResponse(res, confirmationToken)
 }

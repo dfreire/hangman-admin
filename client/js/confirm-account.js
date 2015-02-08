@@ -2,7 +2,6 @@ import {React} from "globals/react";
 import {Router} from "globals/react-router"
 import {Link} from "globals/react-router";
 import {Post} from "ajax";
-import {i18n} from "verify-email-i18n";
 
 var i18n = {
     ConfirmedAccountText: {
@@ -11,7 +10,7 @@ var i18n = {
     }
 }
 
-export var VerifyEmail = React.createClass({
+export var ConfirmAccount = React.createClass({
     mixins: [Router.State],
 
     getInitialState: function() {
@@ -20,7 +19,7 @@ export var VerifyEmail = React.createClass({
         var requestData = {
             token: state.params.token
         };
-        Post("/verify-email", requestData, function(responseData) {
+        Post("/confirm-account", requestData, function(responseData) {
         });
 
         console.log(state.params);

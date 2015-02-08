@@ -1,6 +1,5 @@
 import {React} from "globals/react";
 import {Router, Link} from "globals/react-router";
-import {i18n} from "dashboard-i18n";
 
 var i18n = {
     Title: {
