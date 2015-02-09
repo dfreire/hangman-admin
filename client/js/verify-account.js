@@ -4,9 +4,9 @@ import {Link} from "globals/react-router";
 import {Post} from "ajax";
 
 var i18n = {
-    ConfirmedAccountText: {
-        en: "Your account has been confirmed.",
-        pt: "O seu registo foi confirmado."
+    VerifiedAccountText: {
+        en: "Your account has been verified.",
+        pt: "A sua conta foi verificada."
     }
 }
 
@@ -19,7 +19,7 @@ export var ConfirmAccount = React.createClass({
         var requestData = {
             token: state.params.token
         };
-        Post("/confirm-account", requestData, function(responseData) {
+        Post("/verify-account", requestData, function(responseData) {
         });
 
         console.log(state.params);
@@ -36,7 +36,7 @@ export var ConfirmAccount = React.createClass({
             <div className="row">
             <div className="col-md-4 col-md-offset-4">
 
-            <div className="alert alert-success" role="alert">{this.getI18N("ConfirmedAccountText")}</div>
+            <div className="alert alert-success" role="alert">{this.getI18N("VerifiedAccountText")}</div>
 
             </div>
             </div>

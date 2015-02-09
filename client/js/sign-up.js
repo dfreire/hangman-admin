@@ -25,9 +25,9 @@ var i18n = {
         en:"or",
         pt: "ou"
     },
-    ConfirmationMessage: {
-        en: "<h3>Thank you</h3><p>In a few moments you will receive an email with a confirmation link.</p><p>Please confirm your account by clicking that link.</p>",
-        pt: "<h3>Obrigado</h3><p>Dentro de alguns instantes receberá um mail com um link de confirmação.</p><p>Por favor confirme a sua conta clicando nesse link.</p>"
+    VerificationMessage: {
+        en: "<h3>Thank you</h3><p>In a few moments you will receive an email with a verification link.</p><p>Please verify your account by clicking that link.</p>",
+        pt: "<h3>Obrigado</h3><p>Dentro de alguns instantes receberá um mail com um link de verificação.</p><p>Por favor verifique a sua conta clicando nesse link.</p>"
     }
 };
 
@@ -64,7 +64,7 @@ export var SignUp = React.createClass({
             var requestData = {
                 email:     this.refs.myEmail.getValue(),
                 password:  this.refs.myPassword.getValue(),
-                callback:  this.state.params.lang + "/confirm-account"
+                callback:  this.state.params.lang + "/verify-account"
             };
             var that = this;
             Post("/sign-up", requestData, function(responseData) {
@@ -82,7 +82,7 @@ export var SignUp = React.createClass({
             'hidden':         this.state.hasSignedUp
         });
 
-        var confirmationClasses = cx({
+        var verificationClasses = cx({
             'alert':          true,
             'alert-success':  true,
             'hidden':         !this.state.hasSignedUp
@@ -117,7 +117,7 @@ export var SignUp = React.createClass({
             </div>
             </div>
 
-            <div className={confirmationClasses} role="alert" dangerouslySetInnerHTML={{__html: this.getI18N("ConfirmationMessage")}} />
+            <div className={verificationClasses} role="alert" dangerouslySetInnerHTML={{__html: this.getI18N("VerificationMessage")}} />
 
             </div>
             </div>

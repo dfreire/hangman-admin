@@ -2,7 +2,7 @@ import {React} from "globals/react"
 import {Router, Route, RouteHandler, DefaultRoute, NotFoundRoute, Redirect, Link} from "globals/react-router"
 import {SignUp} from "sign-up";
 import {SignIn} from "sign-in";
-import {ConfirmAccount} from "confirm-account";
+import {ConfirmAccount} from "verify-account";
 import {Dashboard} from "dashboard";
 
 var Container = React.createClass({
@@ -24,10 +24,10 @@ var Lang = React.createClass({
 var routes = (
     <Route handler={Container} path="/">
         <Redirect from="/" to="/en/sign-up" />
-        <Route name="sign-up"         path="/:lang/sign-up"                handler={SignUp} />
-        <Route name="sign-in"         path="/:lang/sign-in"                handler={SignIn} />
-        <Route name="confirm-account" path="/:lang/confirm-account/:token" handler={ConfirmAccount} />
-        <Route name="dashboard"       path="/:lang/dashboard"              handler={Dashboard} />
+        <Route name="sign-up"        path="/:lang/sign-up"                handler={SignUp} />
+        <Route name="sign-in"        path="/:lang/sign-in"                handler={SignIn} />
+        <Route name="verify-account" path="/:lang/verify-account/:token" handler={ConfirmAccount} />
+        <Route name="dashboard"      path="/:lang/dashboard"              handler={Dashboard} />
     </Route>
 );
 

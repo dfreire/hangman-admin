@@ -33,7 +33,7 @@ func main() {
 	router.Get("/{page}", hs.IndexHandler)
 	router.Post("/sign-up", hs.SignUpHandler)
 	router.Post("/sign-in", hs.SignInHandler)
-	router.Post("/confirm-account", hs.ConfirmAccountHandler)
+	router.Post("/verify-account", hs.VerifyAccountHandler)
 
 	n := negroni.Classic()
 	n.UseHandler(router)
@@ -92,7 +92,7 @@ func (self *handlers) SignUpHandler(res http.ResponseWriter, req *http.Request) 
 	password := params["password"].(string)
 	callback := params["callback"].(string)
 
-	confirmationToken, err := self.authService.SignUp("guijs", userEmail, password)
+	verificationToken, err := self.authService.SignUp("guijs", userEmail, password)
 	if err != nil {
 		sendErrorResponse(res, err.Error())
 		return
@@ -103,7 +103,7 @@ func (self *handlers) SignUpHandler(res http.ResponseWriter, req *http.Request) 
 	e.To = []string{userEmail}
 	e.Subject = "Welcome to PuffinFramework"
 
-	html := strings.Join([]string{"<a href='http://localhost:3001/", callback, "/", confirmationToken, "'>confirm your account</a>"}, "")
+	html := strings.Join([]string{"<a href='http://localhost:3001/", callback, "/", verificationToken, "'>verify your account</a>"}, "")
 	e.HTML = []byte(html)
 
 	if err := self.mailService.Send(e); err != nil {
@@ -111,7 +111,7 @@ func (self *handlers) SignUpHandler(res http.ResponseWriter, req *http.Request) 
 		return
 	}
 
-	sendOkResponse(res, confirmationToken)
+	sendOkResponse(res, verificationToken)
 }
 
 func (self *handlers) SignInHandler(res http.ResponseWriter, req *http.Request) {
@@ -134,7 +134,7 @@ func (self *handlers) SignInHandler(res http.ResponseWriter, req *http.Request) 
 	sendOkResponse(res, sessionToken)
 }
 
-func (self *handlers) ConfirmAccountHandler(res http.ResponseWriter, req *http.Request) {
+func (self *handlers) VerifyAccountHandler(res http.ResponseWriter, req *http.Request) {
 	params := make(map[string]interface{})
 	err := json.NewDecoder(req.Body).Decode(&params)
 	if err != nil {
@@ -142,13 +142,13 @@ func (self *handlers) ConfirmAccountHandler(res http.ResponseWriter, req *http.R
 		return
 	}
 
-	confirmationToken := params["token"].(string)
+	verificationToken := params["token"].(string)
 
-	err = self.authService.VerifyEmail(confirmationToken)
+	err = self.authService.VerifyEmail(verificationToken)
 	if err != nil {
 		sendErrorResponse(res, err.Error())
 		return
 	}
 
-	sendOkResponse(res, confirmationToken)
+	sendOkResponse(res, verificationToken)
 }
