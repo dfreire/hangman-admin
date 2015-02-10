@@ -144,7 +144,7 @@ func (self *handlers) VerifyAccountHandler(res http.ResponseWriter, req *http.Re
 
 	verificationToken := params["token"].(string)
 
-	err = self.authService.VerifyEmail(verificationToken)
+	err = self.authService.VerifyAccount(verificationToken)
 	if err != nil {
 		sendErrorResponse(res, err.Error())
 		return
